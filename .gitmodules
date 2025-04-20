@@ -5,3 +5,6 @@
 	path = poky
 	url = https://git.yoctoproject.org/poky
 	branch = kirkstone
+[submodule "sources/assignment3"]
+	path = sources/assignment3
+	url = https://github.com/cu-ecen-aeld/assignments-3-and-later-jainaneesh
