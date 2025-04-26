@@ -45,5 +45,5 @@ do_install () {
 
 	# Install the startup script
 	install -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${WORKDIR}/aesdsocket-startup.sh ${D}${sysconfdir}/init.d/aesdsocket
+	install -m 0755 ${S}/aesdsocket-startup.sh ${D}${sysconfdir}/init.d/aesdsocket
 }
