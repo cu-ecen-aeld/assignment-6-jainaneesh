@@ -18,10 +18,10 @@ S = "${WORKDIR}/git/server"
 
 # TODO: Add the aesdsocket application and any other files you need to install
 # See https://git.yoctoproject.org/poky/plain/meta/conf/bitbake.conf?h=kirkstone
-#FILES:${PN} += "${bindir}/aesdsocket"
+FILES:${PN} += "${bindir}/aesdsocket ${sysconfdir}/init.d/aesdsocket"
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
-#TARGET_LDFLAGS += "-pthread -lrt"
+TARGET_LDFLAGS += "-pthread -lrt"
 
 do_configure () {
 	:
@@ -39,4 +39,11 @@ do_install () {
 	# and
 	# https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-S
 	# See example at https://github.com/cu-ecen-aeld/ecen5013-yocto/blob/ecen5013-hello-world/meta-ecen5013/recipes-ecen5013/ecen5013-hello-world/ecen5013-hello-world_git.bb
+	# Install the compiled aesdsocket binary
+	install -d ${D}${bindir}
+	install -m 0755 aesdsocket ${D}${bindir}/aesdsocket
+
+	# Install the startup script
+	install -d ${D}${sysconfdir}/init.d
+	install -m 0755 ${WORKDIR}/aesdsocket-startup.sh ${D}${sysconfdir}/init.d/aesdsocket
 }
