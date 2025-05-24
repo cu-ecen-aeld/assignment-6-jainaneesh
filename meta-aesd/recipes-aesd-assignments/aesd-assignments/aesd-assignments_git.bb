@@ -46,4 +46,8 @@ do_install () {
 	# Install the startup script
 	install -d ${D}${sysconfdir}/init.d
 	install -m 0755 ${S}/aesdsocket-start-stop ${D}${sysconfdir}/init.d/aesdsocket
+
+	# Create a symlink in rcS.d so it runs at boot
+	install -d ${D}${sysconfdir}/rcS.d
+	ls -sf ../init.d/aesdsocket ${D}${sysconfdir}/rcS.d/S99aesdsocket
 }
