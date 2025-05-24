@@ -49,5 +49,5 @@ do_install () {
 
 	# Create a symlink in rcS.d so it runs at boot
 	install -d ${D}${sysconfdir}/rcS.d
-	ls -sf ../init.d/aesdsocket ${D}${sysconfdir}/rcS.d/S99aesdsocket
+	ln -sf ../init.d/aesdsocket ${D}${sysconfdir}/rcS.d/S99aesdsocket
 }
