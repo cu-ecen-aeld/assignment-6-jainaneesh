@@ -13,7 +13,7 @@ SUMMARY = "misc-modules kernel driver"
 DESCRIPTION = "Builds the misc-modules from the ldd3 source tree"
 PN = "misc-modules"
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
-LIC_FILES_CHKSUM = "file://generic_GPLv2;md5=751419260aa954499f7abaabaa882bbe"
+LIC_FILES_CHKSUM = "file://generic_GPLv2;md5=801f80980d171dd6425610833a22dbe6"
 
 SRC_URI = "file://misc-init \
 	   file://generic_GPLv2"
