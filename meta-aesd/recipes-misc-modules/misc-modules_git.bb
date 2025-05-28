@@ -14,17 +14,17 @@ DESCRIPTION = "Builds the misc-modules from the ldd3 source tree"
 PN = "misc-modules"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=f098732a73b5f6f3430472f5b094ffdb"
 
-SRC_URI = "git://git@github.com/cu-ecen-aeld/assignment-7-jainaneesh.git;protocol=https;branch=master \
-           file://0001-Added-support-for-scull-module.patch \
+SRC_URI = "file://0001-Added-support-for-scull-module.patch \
 	   file://misc-init \
            "
 
 # Modify these as desired
-PV = "1.0+git${SRCPV}"
+#PV = "1.0+git${SRCPV}"
 #SRCREV = "97e43abb15e77f7a32c8e48d41a19a9f29d362db"
-SRCREV = "${AUTOREV}"
+#SRCREV = "${AUTOREV}"
 
-S = "${WORKDIR}/git"
+#S = "${WORKDIR}/git"
+S = "${WORKDIR}"
 
 inherit module update-rc.d
 
