@@ -12,11 +12,10 @@ LICENSE = "GPLv2"
 SUMMARY = "misc-modules kernel driver"
 DESCRIPTION = "Builds the misc-modules from the ldd3 source tree"
 PN = "misc-modules"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=f098732a73b5f6f3430472f5b094ffdb"
+FILESEXTRAPATHS_prepend := "${THISDIR}/files"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=a14fe441b6663e8969e960a52006e395"
 
-SRC_URI = "file://0001-Added-support-for-scull-module.patch \
-	   file://misc-init \
-           "
+SRC_URI = "file://misc-init"
 
 # Modify these as desired
 #PV = "1.0+git${SRCPV}"
