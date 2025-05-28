@@ -14,7 +14,7 @@ DESCRIPTION = "Builds the misc-modules from the ldd3 source tree"
 PN = "misc-modules"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=f098732a73b5f6f3430472f5b094ffdb"
 
-SRC_URI = "git://git@github.com/cu-ecen-aeld/assignment-7-jainaneesh.git;protocol=ssh;branch=master \
+SRC_URI = "git://git@github.com/cu-ecen-aeld/assignment-7-jainaneesh.git;protocol=https;branch=master \
            file://0001-Added-support-for-scull-module.patch \
 	   file://misc-init \
            "
