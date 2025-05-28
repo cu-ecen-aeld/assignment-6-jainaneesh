@@ -12,7 +12,7 @@ LICENSE = "GPLv2"
 SUMMARY = "misc-modules kernel driver"
 DESCRIPTION = "Builds the misc-modules from the ldd3 source tree"
 PN = "misc-modules"
-FILESEXTRAPATHS_prepend := "${THISDIR}/files"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a14fe441b6663e8969e960a52006e395"
 
 SRC_URI = "file://misc-init"
