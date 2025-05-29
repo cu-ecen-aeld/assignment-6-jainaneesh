@@ -15,7 +15,8 @@ PN = "misc-modules"
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 LIC_FILES_CHKSUM = "file://generic_GPLv2;md5=801f80980d171dd6425610833a22dbe6"
 
-SRC_URI = "file://misc-init \
+SRC_URI = "file://Makefile \
+	   file://misc-init \
 	   file://generic_GPLv2"
 
 # Modify these as desired
