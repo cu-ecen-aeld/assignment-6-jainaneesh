@@ -29,7 +29,8 @@ S = "${WORKDIR}"
 
 inherit module update-rc.d
 
-EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} M=${S}/misc-modules"
+#EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} M=${S}/misc-modules"
+EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} M=${S}"
 
 FILES:${PN} += "etc/init.d/misc-init"
 INITSCRIPT_NAME = "misc-init"
