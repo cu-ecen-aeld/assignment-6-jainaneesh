@@ -79,11 +79,10 @@ static int ct_open(struct inode *inode, struct file *file)
  * set of the canned seq_ ops.
  */
 static const PROC_OPS ct_file_ops = {
-	.owner   = THIS_MODULE,
-	.open    = ct_open,
-	.read    = seq_read,
-	.llseek  = seq_lseek,
-	.release = seq_release
+	PROC_OPEN    = ct_open,
+	PROC_READ    = seq_read,
+	PROC_LSEEK  = seq_lseek,
+	PROC_RELEASE = seq_release
 };
 
 
