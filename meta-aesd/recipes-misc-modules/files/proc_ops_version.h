@@ -15,7 +15,7 @@
 #define PROC_OPS struct file_operations
 #define PROC_OPEN .open
 #define PROC_READ .read
-#define PROC_LSEEK .llseak
+#define PROC_LSEEK .llseek
 #define PROC_RELEASE .release
 #endif
 
