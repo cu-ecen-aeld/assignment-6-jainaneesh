@@ -9,7 +9,7 @@
 #define PROC_OPS struct proc_ops
 #define PROC_OPEN .proc_open
 #define PROC_READ .proc_read
-#define PROC_LSEEK .proc_lseak
+#define PROC_LSEEK .proc_lseek
 #define PROC_RELEASE .proc_release
 #else
 #define PROC_OPS struct file_operations
