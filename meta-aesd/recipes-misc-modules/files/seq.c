@@ -78,7 +78,7 @@ static int ct_open(struct inode *inode, struct file *file)
  * The file operations structure contains our open function along with
  * set of the canned seq_ ops.
  */
-static const struct file_operations ct_file_ops = {
+static const PROC_OPS ct_file_ops = {
 	.owner   = THIS_MODULE,
 	.open    = ct_open,
 	.read    = seq_read,
@@ -95,8 +95,7 @@ static int ct_init(void)
 {
 	struct proc_dir_entry *entry;
 
-	entry = proc_create("sequence", 0, NULL,
-	    proc_ops_wrapper(&ct_file_ops, ct_file_pops));
+	entry = proc_create("sequence", 0, NULL, &ct_file_ops);
 	if (!entry)
 		return -ENOMEM;
 	return 0;
