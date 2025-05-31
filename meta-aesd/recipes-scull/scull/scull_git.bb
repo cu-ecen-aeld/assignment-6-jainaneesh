@@ -32,7 +32,7 @@ SRCREV = "${AUTOREV}"
 #S = "${WORKDIR}/git"
 S = "${WORKDIR}"
 
-inherit module update-rc.d
+#inherit module update-rc.d
 EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} M=${S}"
 
 do_install:append() {

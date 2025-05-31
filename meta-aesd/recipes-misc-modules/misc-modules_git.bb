@@ -40,7 +40,7 @@ SRC_URI = "file://Makefile \
 S = "${WORKDIR}"
 
 EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} M=${S}"
-inhert module update-rc.d_OEMAKE += " -C ${STAGING_KERNEL_DIR} M=${S}"
+#inhert module update-rc.d
 
 do_install:append() {
     # Install the kernel module
