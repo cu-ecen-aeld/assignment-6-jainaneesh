@@ -154,10 +154,10 @@ static int jiq_read_wq_open(struct inode *inode, struct file *file)
 }
 
 static const PROC_OPS jiq_read_wq_fops = {
-	.PROC_OPEN	= jiq_read_wq_open,
-	.PROC_READ	= seq_read,
-	.PROC_LSEEK	= seq_lseek,
-	.PROC_RELEASE	= single_release,
+	PROC_OPEN	= jiq_read_wq_open,
+	PROC_READ	= seq_read,
+	PROC_LSEEK	= seq_lseek,
+	PROC_RELEASE	= single_release,
 };
 
 static int jiq_read_wq_delayed_show(struct seq_file *m, void *v)
@@ -183,10 +183,10 @@ static int jiq_read_wq_delayed_open(struct inode *inode, struct file *file)
 }
 
 static const PROC_OPS jiq_read_wq_delayed_fops = {
-	.PROC_OPEN	= jiq_read_wq_delayed_open,
-	.PROC_READ	= seq_read,
-	.PROC_LSEEK	= seq_lseek,
-	.PROC_RELEASE	= single_release,
+	PROC_OPEN	= jiq_read_wq_delayed_open,
+	PROC_READ	= seq_read,
+	PROC_LSEEK	= seq_lseek,
+	PROC_RELEASE	= single_release,
 };
 
 /*
@@ -217,10 +217,10 @@ static int jiq_read_tasklet_open(struct inode *inode, struct file *file)
 }
 
 static const PROC_OPS jiq_read_tasklet_fops = {
-	.PROC_OPEN	= jiq_read_tasklet_open,
-	.PROC_READ	= seq_read,
-	.PROC_LSEEK	= seq_lseek,
-	.PROC_RELEASE	= single_release,
+	PROC_OPEN	= jiq_read_tasklet_open,
+	PROC_READ	= seq_read,
+	PROC_LSEEK	= seq_lseek,
+	PROC_RELEASE	= single_release,
 };
 
 /*
@@ -257,10 +257,10 @@ static int jiq_read_run_timer_open(struct inode *inode, struct file *file)
 }
 
 static const PROC_OPS jiq_read_run_timer_fops = {
-	.PROC_OPEN	= jiq_read_run_timer_open,
-	.PROC_READ	= seq_read,
-	.PROC_LSEEK	= seq_lseek,
-	.PROC_RELEASE	= single_release,
+	PROC_OPEN	= jiq_read_run_timer_open,
+	PROC_READ	= seq_read,
+	PROC_LSEEK	= seq_lseek,
+	PROC_RELEASE	= single_release,
 };
 
 /*
