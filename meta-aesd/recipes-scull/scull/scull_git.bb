@@ -8,6 +8,7 @@
 # The following license files were not able to be identified and are
 # represented as "Unknown" below, you will need to check them yourself:
 #   LICENSE
+DEPENDS += "virtual/kernel"
 LICENSE = "GPLv2"
 SUMMARY = "scull kernel module"
 DESCRIPTION = "Builds the scull kernel module from the ldd3 source tree"
@@ -33,18 +34,29 @@ SRCREV = "${AUTOREV}"
 S = "${WORKDIR}"
 
 #inherit module update-rc.d
-EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} O=${STAGING_KERNEL_BUILDDIR} M=${S} \
-			ARCH=${TARGET_ARCH} CROSS_COMPILE=${TARGET_PREFIX}"
+#EXTRA_OEMAKE += " -C ${STAGING_KERNEL_BUILDDIR} M=${S} \
+#			ARCH=arm64 CROSS_COMPILE=${TARGET_PREFIX}"
 
-do_configure() {
-	echo "Preparing kernel build directory at ${STAGING_KERNEL_BUILDDIR}"
-	mkdir -p ${STAGING_KERNEL_BUILDDIR}
-	oe_runmake -C ${STAGING_KERNEL_DIR} \
-			O=${STAGING_KERNEL_BUILDDIR} \
-			ARCH=${TARGET_ARCH} \
-			CROSS_COMPILE=${TARGET_PREFIX} \
+do_compile() {
+	#oe_runmake -C ${STAGING_KERNEL_DIR} M=${S} ARCH=arm64 CROSS_COMPILE=${TARGET_PREFIX} modules_prepare
+	oe_runmake -C ${STAGING_KERNEL_DIR} O=${STAGING_KERNEL_BUILDDIR} \
+			M=${S} ARCH=arm64 CROSS_COMPILE=${TARGET_PREFIX} \
 			modules_prepare
+	oe_runmake -C ${STAGING_KERNEL_BUILDDIR} \
+			M=${S} ARCH=arm64 CROSS_COMPILE=${TARGET_PREFIX}
 }
+
+
+#do_configure() {
+#	echo "Preparing kernel build directory at ${STAGING_KERNEL_BUILDDIR}"
+#	mkdir -p ${STAGING_KERNEL_BUILDDIR}
+#	oe_runmake -C ${STAGING_KERNEL_DIR} \
+#			O=${STAGING_KERNEL_BUILDDIR} \
+#			M=${S} \
+#			ARCH=arm64 \
+#			CROSS_COMPILE=${TARGET_PREFIX} \
+#			modules_prepare
+#}
 do_install:append() {
     # Install the kernel module
      install -d ${D}/lib/modules/${KERNEL_VERSION}/extra
