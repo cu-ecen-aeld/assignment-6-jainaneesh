@@ -16,6 +16,18 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 LIC_FILES_CHKSUM = "file://generic_GPLv2;md5=801f80980d171dd6425610833a22dbe6"
 
 SRC_URI = "file://Makefile \
+	   file://hello.c \
+	   file://hellop.c \
+	   file://seq.c \
+	   file://jiq.c \
+	   file://sleepy.c \
+	   file://complete.c \
+	   file://silly.c \
+	   file://faulty.c \
+	   file://kdatasize.c \
+           file://kdataalign.c \
+           file://jit.c \
+	   file://proc_ops_version.h \
 	   file://misc-init \
 	   file://generic_GPLv2"
 
