@@ -39,7 +39,7 @@ EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} O=${STAGING_KERNEL_BUILDDIR} M=${S} \
 do_configure() {
 	echo "Preparing kernel build directory at ${STAGING_KERNEL_BUILDDIR}"
 	mkdir -p ${STAGING_KERNEL_BUILDDIR}
-	oe_runmake -C ${STAGING_KERNLE_DIR} \
+	oe_runmake -C ${STAGING_KERNEL_DIR} \
 			O=${STAGING_KERNEL_BUILDDIR} \
 			ARCH=${TARGET_ARCH} \
 			CROSS_COMPILE=${TARGET_PREFIX} \
