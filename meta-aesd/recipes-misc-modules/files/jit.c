@@ -100,7 +100,7 @@ static int jit_fn_open(struct inode *inode, struct file *file)
 	#endif
 }
 
-static const struct file_operations jit_fn_fops = {
+static const PROC_OPS jit_fn_fops = {
 	PROC_OPEN	= jit_fn_open,
 	PROC_READ	= seq_read,
 	PROC_LSEEK	= seq_lseek,
@@ -154,7 +154,7 @@ static int jit_currentime_open(struct inode *inode, struct file *file)
 	return single_open(file, jit_currentime_show, NULL);
 }
 
-static const struct file_operations jit_currentime_fops = {
+static const PROC_OPS jit_currentime_fops = {
 	PROC_OPEN	= jit_currentime_open,
 	PROC_READ	= seq_read,
 	PROC_LSEEK	= seq_lseek,
@@ -238,7 +238,7 @@ static int jit_timer_open(struct inode *inode, struct file *file)
 	return single_open(file, jit_timer_show, NULL);
 }
 
-static const struct file_operations jit_timer_fops = {
+static const PROC_OPS jit_timer_fops = {
 	PROC_OPEN	= jit_timer_open,
 	PROC_READ	= seq_read,
 	PROC_LSEEK	= seq_lseek,
@@ -314,7 +314,7 @@ static int jit_tasklet_open(struct inode *inode, struct file *file)
 	#endif
 }
 
-static const struct file_operations jit_tasklet_fops = {
+static const PROC_OPS jit_tasklet_fops = {
 	PROC_OPEN	= jit_tasklet_open,
 	PROC_READ	= seq_read,
 	PROC_LSEEK	= seq_lseek,
