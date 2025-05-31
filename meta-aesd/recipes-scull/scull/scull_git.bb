@@ -18,7 +18,6 @@ SRC_URI = "file://Makefile \
 	   file://main.c \
 	   file://pipe.c \
 	   file://scull.h \
-           file://0001-Added-support-for-scull-module.patch \
 	   file://scull-init \
            "
 
