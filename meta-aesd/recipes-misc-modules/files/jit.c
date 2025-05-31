@@ -101,10 +101,10 @@ static int jit_fn_open(struct inode *inode, struct file *file)
 }
 
 static const struct file_operations jit_fn_fops = {
-	.open		= jit_fn_open,
-	.read		= seq_read,
-	.llseek		= seq_lseek,
-	.release	= single_release,
+	PROC_OPEN	= jit_fn_open,
+	PROC_READ	= seq_read,
+	PROC_LSEEK	= seq_lseek,
+	PROC_RELEASE	= single_release,
 };
 
 /*
@@ -155,10 +155,10 @@ static int jit_currentime_open(struct inode *inode, struct file *file)
 }
 
 static const struct file_operations jit_currentime_fops = {
-	.open		= jit_currentime_open,
-	.read		= seq_read,
-	.llseek		= seq_lseek,
-	.release	= single_release,
+	PROC_OPEN	= jit_currentime_open,
+	PROC_READ	= seq_read,
+	PROC_LSEEK	= seq_lseek,
+	PROC_RELEASE	= single_release,
 };
 
 /*
@@ -239,10 +239,10 @@ static int jit_timer_open(struct inode *inode, struct file *file)
 }
 
 static const struct file_operations jit_timer_fops = {
-	.open		= jit_timer_open,
-	.read		= seq_read,
-	.llseek		= seq_lseek,
-	.release	= single_release,
+	PROC_OPEN	= jit_timer_open,
+	PROC_READ	= seq_read,
+	PROC_LSEEK	= seq_lseek,
+	PROC_RELEASE	= single_release,
 };
 
 void jit_tasklet_fn(unsigned long arg)
@@ -315,31 +315,39 @@ static int jit_tasklet_open(struct inode *inode, struct file *file)
 }
 
 static const struct file_operations jit_tasklet_fops = {
-	.open		= jit_tasklet_open,
-	.read		= seq_read,
-	.llseek		= seq_lseek,
-	.release	= single_release,
+	PROC_OPEN	= jit_tasklet_open,
+	PROC_READ	= seq_read,
+	PROC_LSEEK	= seq_lseek,
+	PROC_RELEASE	= single_release,
 };
 
 int __init jit_init(void)
 {
-	proc_create("currentime", 0, NULL,
-	    proc_ops_wrapper(&jit_currentime_fops, jit_currentime_pops));
-	proc_create_data("jitbusy", 0, NULL,
-	    proc_ops_wrapper(&jit_fn_fops, jit_fn_pops), (void *)JIT_BUSY);
-	proc_create_data("jitsched", 0, NULL,
-	    proc_ops_wrapper(&jit_fn_fops, jit_fn_pops), (void *)JIT_SCHED);
-	proc_create_data("jitqueue", 0, NULL,
-	    proc_ops_wrapper(&jit_fn_fops, jit_fn_pops), (void *)JIT_QUEUE);
-	proc_create_data("jitschedto", 0, NULL,
-	    proc_ops_wrapper(&jit_fn_fops, jit_fn_pops), (void *)JIT_SCHEDTO);
+	//proc_create("currentime", 0, NULL,
+	  //  proc_ops_wrapper(&jit_currentime_fops, jit_currentime_pops));
+	proc_create("currentime", 0, NULL, &jit_currentime_fops);
+	//proc_create_data("jitbusy", 0, NULL,
+	  //  proc_ops_wrapper(&jit_fn_fops, jit_fn_pops), (void *)JIT_BUSY);
+	proc_create_data("jitbusy", 0, NULL, &jit_fn_fops, (void *)JIT_BUSY);
+	//proc_create_data("jitsched", 0, NULL,
+	  //  proc_ops_wrapper(&jit_fn_fops, jit_fn_pops), (void *)JIT_SCHED);
+	proc_create_data("jitsched", 0, NULL, &jit_fn_fops, (void *)JIT_SCHED);
+	//proc_create_data("jitqueue", 0, NULL,
+	  //  proc_ops_wrapper(&jit_fn_fops, jit_fn_pops), (void *)JIT_QUEUE);
+	proc_create_data("jitqueue", 0, NULL, &jit_fn_fops, (void *)JIT_QUEUE);
+	//proc_create_data("jitschedto", 0, NULL,
+	  //  proc_ops_wrapper(&jit_fn_fops, jit_fn_pops), (void *)JIT_SCHEDTO);
+	proc_create_data("jitschedto", 0, NULL, &jit_fn_fops, (void *)JIT_SCHEDTO);
 
-	proc_create("jitimer", 0, NULL,
-	    proc_ops_wrapper(&jit_timer_fops, jit_timer_pops));
-	proc_create("jitasklet", 0, NULL,
-	    proc_ops_wrapper(&jit_tasklet_fops, jit_tasklet_pops));
-	proc_create_data("jitasklethi", 0, NULL,
-	    proc_ops_wrapper(&jit_tasklet_fops, jit_tasklet_pops), (void *)1);
+	//proc_create("jitimer", 0, NULL,
+	  //  proc_ops_wrapper(&jit_timer_fops, jit_timer_pops));
+	proc_create("jitimer", 0, NULL, &jit_timer_fops);
+	//proc_create("jitasklet", 0, NULL,
+	  //  proc_ops_wrapper(&jit_tasklet_fops, jit_tasklet_pops));
+	proc_create("jitasklet", 0, NULL, &jit_tasklet_fops);
+	//proc_create_data("jitasklethi", 0, NULL,
+	  //  proc_ops_wrapper(&jit_tasklet_fops, jit_tasklet_pops), (void *)1);
+	proc_create_data("jitasklethi", 0, NULL, &jit_tasklet_fops, (void *)1);
 
 	return 0; /* success */
 }
