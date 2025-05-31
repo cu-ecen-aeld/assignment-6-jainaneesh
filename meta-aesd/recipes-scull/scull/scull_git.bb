@@ -11,7 +11,7 @@
 LICENSE = "GPLv2"
 SUMMARY = "scull kernel module"
 DESCRIPTION = "Builds the scull kernel module from the ldd3 source tree"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=f098732a73b5f6f3430472f5b094ffdb"
+LIC_FILES_CHKSUM = "file://generic_GPLv2;md5=801f80980d171dd6425610833a22dbe6"
 FILESEXTRAPATHS:prepend := "${THISDIR}/files"
 SRC_URI = "file://Makefile \
 	   file://access.c \
