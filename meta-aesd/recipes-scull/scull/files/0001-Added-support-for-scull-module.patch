@@ -1,0 +1,23 @@
+From 63718aa925faaad62df85cd065588fbf8a11a8b7 Mon Sep 17 00:00:00 2001
+From: jainaneesh <jainaneesh15@gmail.com>
+Date: Tue, 27 May 2025 19:30:42 -0400
+Subject: [PATCH] Added support for scull module
+
+---
+ Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 7b08c49..60ffe9b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,8 @@
+ SUBDIRS =  misc-progs misc-modules \
+            skull scull scullc scullp lddbus sculld scullv shortprint simple tty \
+ 	   pci usb\
+-	   sbull snull short
++	   sbull snull short \
++	   misc-modules scull
+ 
+ all: subdirs
+ 
