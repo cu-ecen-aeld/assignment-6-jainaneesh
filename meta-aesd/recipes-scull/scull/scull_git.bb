@@ -14,6 +14,8 @@ DESCRIPTION = "Builds the scull kernel module from the ldd3 source tree"
 FILESEXTRAPATHS:prepend := "${THISDIR}/files"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=801f80980d171dd6425610833a22dbe6"
 SRC_URI = "file://Makefile \
+	   file://access_ok_version.h \
+	   file://proc_ops_version.h \
 	   file://access.c \
 	   file://main.c \
 	   file://pipe.c \
