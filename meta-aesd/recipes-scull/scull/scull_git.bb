@@ -36,6 +36,14 @@ S = "${WORKDIR}"
 EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} O=${STAGING_KERNEL_BUILDDIR} M=${S} \
 			ARCH=${TARGET_ARCH} CROSS_COMPILE=${TARGET_PREFIX}"
 
+do_configure:prepend() {
+	echo "Preparing kernel for external module build"
+	oe_runmake -C ${STAGING_KERNLE_DIR} \
+			O=${STAGING_KERNEL_BUILDDIR} \
+			ARCH=${TARGET_ARCH} \
+			CROSS_COMPILE=${TARGET_PREFIX} \
+			modules_prepare
+}
 do_install:append() {
     # Install the kernel module
      install -d ${D}/lib/modules/${KERNEL_VERSION}/extra
