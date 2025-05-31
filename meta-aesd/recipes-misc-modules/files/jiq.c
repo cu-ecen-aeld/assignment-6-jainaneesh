@@ -275,14 +275,18 @@ static int jiq_init(void)
 	tasklet_init(&jiq_data.jiq_tasklet, jiq_print_tasklet,
 	    (unsigned long)&jiq_data);
 
-	proc_create("jiqwq", 0, NULL,
-	    proc_ops_wrapper(&jiq_read_wq_fops, jiq_read_wq_pops));
-	proc_create("jiqwqdelay", 0, NULL,
-	    proc_ops_wrapper(&jiq_read_wq_delayed_fops, jiq_read_wq_delayed_pops));
-	proc_create("jitimer", 0, NULL,
-	    proc_ops_wrapper(&jiq_read_run_timer_fops, jiq_read_run_timer_pops));
-	proc_create("jiqtasklet", 0, NULL,
-	    proc_ops_wrapper(&jiq_read_tasklet_fops, jiq_read_tasklet_pops));
+	//proc_create("jiqwq", 0, NULL,
+	  //  proc_ops_wrapper(&jiq_read_wq_fops, jiq_read_wq_pops));
+	proc_create("jiqwq", 0, NULL, &jiq_read_wq_fops);
+	//proc_create("jiqwqdelay", 0, NULL,
+	  //  proc_ops_wrapper(&jiq_read_wq_delayed_fops, jiq_read_wq_delayed_pops));
+	proc_create("jiqwqdelay", 0, NULL, &jiq_read_wq_delayed_fops);
+	//proc_create("jitimer", 0, NULLq_read_wq_delayed_fops/,
+	  //  proc_ops_wrapper(&jiq_read_run_timer_fops, jiq_read_run_timer_pops));
+	proc_create("jitimer", 0, NULLq_read_wq_delayed_fops, &jiq_read_run_timer_fops);
+	//proc_create("jiqtasklet", 0, NULL,
+	  //  proc_ops_wrapper(&jiq_read_tasklet_fops, jiq_read_tasklet_pops));
+	proc_create("jiqtasklet", 0, NULL, &jiq_read_tasklet_fops);
 
 	return 0; /* succeed */
 }
