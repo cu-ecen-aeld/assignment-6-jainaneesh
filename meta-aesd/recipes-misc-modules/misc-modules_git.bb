@@ -44,29 +44,28 @@ EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} M=${S}"
 
 do_install:append() {
     # Install the kernel module
-     install -d ${D}/lib/modules/${KERNEL_VERSION}/extra
-         install -m 0644 ${S}/scull.ko ${D}/lib/modules/${KERNEL_VERSION}/extra/
+    install -d ${D}/lib/modules/${KERNEL_VERSION}/extra
+    install -m 0644 ${S}/scull.ko ${D}/lib/modules/${KERNEL_VERSION}/extra/
 
-             # Install init script
-                 install -d ${D}${sysconfdir}/init.d
-                     install -m 0755 ${WORKDIR}/scull-init ${D}${sysconfdir}/init.d/
-                     }
+    # Install init script
+    install -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${WORKDIR}/scull-init ${D}${sysconfdir}/init.d/
+}
+    FILES:${PN} += "/lib/modules"
+    RDEPENDS:${PN} += "kernel-module-scull"
 
-                     FILES:${PN} += "/lib/modules"
-                     RDEPENDS:${PN} += "kernel-module-scull"
+    INITSCRIPT_NAME = "scull-init"
+    INITSCRIPT_PARAMS = "defaults"
 
-                     INITSCRIPT_NAME = "scull-init"
-                     INITSCRIPT_PARAMS = "defaults"
+    # ✅ Fix postinstall error on host by running only on target
+pkg_postinst_ontarget:${PN} () {
+    if [ -n "$D" ]; then
+             exit 0
+    fi
 
-                     # ✅ Fix postinstall error on host by running only on target
-                     pkg_postinst_ontarget:${PN} () {
-                         if [ -n "$D" ]; then
-                                 exit 0
-                                     fi
-
-                                        echo "Running depmod on target..."
-                                             depmod || true
-                                             }
+    echo "Running depmod on target..."
+    depmod || true
+}
 
 #EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} M=${S}/misc-modules"
 
