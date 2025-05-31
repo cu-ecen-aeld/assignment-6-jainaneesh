@@ -39,7 +39,8 @@ SRC_URI = "file://Makefile \
 #S = "${WORKDIR}/git"
 S = "${WORKDIR}"
 
-EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} M=${S}"
+EXTRA_OEMAKE += " -C ${STAGING_KERNEL_DIR} O=${STAGING_KERNEL_BUILDDIR} M=${S} \
+			ARCH=${TARGET_ARCH} CROSS_COMPILE=${TARGET_PREFIX}"
 #inhert module update-rc.d
 
 do_install:append() {
@@ -51,13 +52,13 @@ do_install:append() {
     install -d ${D}${sysconfdir}/init.d
     install -m 0755 ${WORKDIR}/scull-init ${D}${sysconfdir}/init.d/
 }
-    FILES:${PN} += "/lib/modules"
-    RDEPENDS:${PN} += "kernel-module-scull"
+FILES:${PN} += "/lib/modules"
+RDEPENDS:${PN} += "kernel-module-scull"
 
-    INITSCRIPT_NAME = "scull-init"
-    INITSCRIPT_PARAMS = "defaults"
+INITSCRIPT_NAME = "scull-init"
+INITSCRIPT_PARAMS = "defaults"
 
-    # ✅ Fix postinstall error on host by running only on target
+# ✅ Fix postinstall error on host by running only on target
 pkg_postinst_ontarget:${PN} () {
     if [ -n "$D" ]; then
              exit 0
